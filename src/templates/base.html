@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой сайт</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200">
+  <header class="flex justify-between p-4 bg-white border-b border-gray-300">
+    <a href="#"><h1 class="text-xl font-bold">RIP</h1></a>
+    <nav class="flex space-x-4">
+      <a href="#" class="hover:text-gray-500">Главная</a>
+      <a href="#" class="hover:text-gray-500">О нас</a>
+      <a href="#" class="hover:text-gray-500">Контакты</a>
+    </nav>
+  </header>
+
+  <main id="content" class="container mx-auto px-4 py-8">
+      {% block content %}{% endblock %}
+  </main>
+
+  <footer class="text-center p-4 bg-white border-t border-gray-300">
+    &copy; <?= date('Y') ?> My Company
+  </footer>
+</body>
+</html>

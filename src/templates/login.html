@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mx-auto w-1/4 px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Вход</h1>
+    <form id="loginForm" action="login" method="post" class="space-y-4 px-10">
+      <div class="flex flex-col">
+        <label for="username" class="text-sm font-medium mb-2">Email:</label>
+        <input type="username" id="username" name="username" required class="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="password" class="text-sm font-medium mb-2">Пароль:</label>
+        <input type="password" id="password" name="password" required class="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+      <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Войти
+      </button>
+    </form>
+    <p class="text-center mt-4">
+      Еще не зарегистрированы? <a href="/reg" class="text-blue-500 hover:text-blue-700">Зарегистрироваться</a>
+    </p>
+  </div>
+
+<script>
+const form = document.getElementById('loginForm');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form);
+
+  // Send an AJAX request to the server API for authentication
+  fetch('/login', {
+    method: 'POST',
+    body: formData,
+  })
+  .then(responseData => {
+    if (responseData.ok) {
+      console.log(responseData);
+      window.location.href = '/protected-route';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
