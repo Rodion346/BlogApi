@@ -19,9 +19,9 @@ temp = Jinja2Templates(directory="src/templates")
 
 @router.get("/")
 def get_base(request: Request):
-    return temp.TemplateResponse("base.html", {"request": request})
+    return temp.TemplateResponse("base_non.html", {"request": request})
 
-@router.get("/reg")
+@router.get("/registration")
 def get_reg(request: Request):
     return temp.TemplateResponse("newuser.html", {"request": request})
 
@@ -31,7 +31,6 @@ def get_reg(request: Request):
 
 
 current_user = fastapi_users.current_user()
-
 
 @router.get("/protected-route")
 def protected_route(request: Request, user: User = Depends(current_user)):
